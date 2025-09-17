@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +10,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
 
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -38,28 +41,45 @@
 
   <style>
     /* Subtle luxury grain */
-    .grain { position: relative; }
+    .grain {
+      position: relative;
+    }
+
     .grain:before {
       content: "";
-      position: absolute; inset: 0; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background-image: url('data:image/svg+xml;utf8,\
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">\
         <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>\
         <rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/>\
       </svg>');
-      mix-blend-mode: multiply; opacity: .25;
+      mix-blend-mode: multiply;
+      opacity: .25;
     }
-    html { scroll-behavior: smooth; }
-    .gold-text { background: linear-gradient(90deg,#E5C990,#f7e9c8,#E5C990); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .gold-text {
+      background: linear-gradient(90deg, #E5C990, #f7e9c8, #E5C990);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
   </style>
 </head>
+
 <body class="bg-stone text-white antialiased selection:bg-champagne/20">
   <!-- Nav -->
   <header class="fixed inset-x-0 top-0 z-50 bg-stone/70 backdrop-blur border-b border-white/10">
     <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
       <a href="#home" class="group inline-flex items-center gap-3" aria-label="virtual">
-        <div class="h-8 w-8 grid place-items-center rounded-full bg-white/5 ring-1 ring-white/10 group-hover:ring-champagne transition"><span class="text-champagne text-xs">360°</span></div>
-        <img src='logo.png' alt="Logo" className="w-14 h-14 mr-2"/>
+
+        <img src='logo.png' alt="Logo" class="w-14 h-14 mr-2" />
+
         <span class="font-serif text-xl tracking-tight">VirtualSpin</span>
       </a>
       <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
@@ -68,7 +88,8 @@
         <a class="hover:text-white" href="#process">Process</a>
         <a class="hover:text-white" href="#contact">Contact</a>
       </nav>
-      <a href="#contact" class="hidden md:inline-flex items-center gap-2 rounded-full border border-champagne/40 px-4 py-2 text-sm hover:bg-champagne hover:text-ink transition-shadow shadow-glow">
+      <a href="#contact"
+        class="hidden md:inline-flex items-center gap-2 rounded-full border border-champagne/40 px-4 py-2 text-sm hover:bg-champagne hover:text-ink transition-shadow shadow-glow">
         Get a Quote
       </a>
     </div>
@@ -76,27 +97,37 @@
 
   <!-- Hero -->
   <section id="home" class="relative overflow-hidden pt-36 md:pt-44 grain">
-    <div class="absolute -top-40 -right-40 h-[42rem] w-[42rem] rounded-full blur-3xl opacity-20" style="background: radial-gradient(closest-side, #E5C990 0%, transparent 60%)"></div>
+    <div class="absolute -top-40 -right-40 h-[42rem] w-[42rem] rounded-full blur-3xl opacity-20"
+      style="background: radial-gradient(closest-side, #E5C990 0%, transparent 60%)"></div>
     <div class="mx-auto max-w-6xl px-6">
       <div class="max-w-4xl">
         <h1 class="font-serif text-6xl md:text-7xl leading-tight">
           Immaculate <span class="gold-text">360° Virtual Tours</span>
         </h1>
-        <p class="mt-6 text-xl text-gray-300 max-w-3xl">We craft seamless, luxury-grade tours that elevate your brand—published to Google Maps and embedded beautifully on your website.</p>
+        <p class="mt-6 text-xl text-gray-300 max-w-3xl">We craft seamless, luxury-grade tours that elevate your
+          brand—published to Google Maps and embedded beautifully on your website.</p>
         <div class="mt-10 flex items-center gap-6">
-          <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-champagne text-ink px-8 py-4 font-medium hover:opacity-90 shadow-glow text-lg">Request Proposal</a>
-          <a href="#work" class="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-medium text-white/90 hover:text-white hover:border-white/40 text-lg">See Work</a>
+          <a href="#contact"
+            class="inline-flex items-center justify-center rounded-full bg-champagne text-ink px-8 py-4 font-medium hover:opacity-90 shadow-glow text-lg">Request
+            Proposal</a>
+          <a href="#work"
+            class="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-medium text-white/90 hover:text-white hover:border-white/40 text-lg">See
+            Work</a>
         </div>
         <div class="mt-12 flex flex-wrap items-center gap-8 text-base text-gray-400">
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Google Maps compatible</div>
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Embed anywhere</div>
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> By appointment only</div>
+          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Google Maps
+            compatible</div>
+          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Embed
+            anywhere</div>
+          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> By
+            appointment only</div>
         </div>
       </div>
     </div>
     <div class="mt-20 md:mt-28 mx-auto max-w-7xl px-6">
       <div class="aspect-[21/9] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
-        <img src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d?q=80&w=1920&auto=format&fit=crop" alt="Elegant interior captured in 360° tour" class="h-full w-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d?q=80&w=1920&auto=format&fit=crop"
+          alt="Elegant interior captured in 360° tour" class="h-full w-full object-cover" />
       </div>
     </div>
   </section>
@@ -107,15 +138,20 @@
       <div class="flex items-end justify-between gap-6">
         <div>
           <h2 class="font-serif text-3xl md:text-4xl">Selected Work</h2>
-          <p class="mt-3 text-gray-400 max-w-xl">From flagship boutiques to landmark residences—our tours bring spaces to life and boost discovery on Google Maps.</p>
+          <p class="mt-3 text-gray-400 max-w-xl">From flagship boutiques to landmark residences—our tours bring spaces
+            to life and boost discovery on Google Maps.</p>
         </div>
-        <a href="#contact" class="hidden md:inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/40">Start Your Project</a>
+        <a href="#contact"
+          class="hidden md:inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/40">Start
+          Your Project</a>
       </div>
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Card 1 -->
         <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop" alt="Luxury hotel lobby" class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop"
+            alt="Luxury hotel lobby"
+            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
             <div class="font-medium">Grand Mercier Hotel</div>
             <div class="text-sm text-gray-300">Lobby & amenities — Published to Google Maps</div>
@@ -123,7 +159,9 @@
         </figure>
         <!-- Card 2 -->
         <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1505692794403-34d4982ebda1?q=80&w=1600&auto=format&fit=crop" alt="Flagship boutique" class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="https://images.unsplash.com/photo-1505692794403-34d4982ebda1?q=80&w=1600&auto=format&fit=crop"
+            alt="Flagship boutique"
+            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
             <div class="font-medium">Atelier Roma</div>
             <div class="text-sm text-gray-300">Flagship boutique — Website embed & Maps</div>
@@ -131,7 +169,9 @@
         </figure>
         <!-- Card 3 -->
         <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop" alt="Modern residence" class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
+            alt="Modern residence"
+            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
             <div class="font-medium">Villa Horizonte</div>
             <div class="text-sm text-gray-300">Private residence — Secure client portal</div>
@@ -146,24 +186,28 @@
     <div class="mx-auto max-w-6xl px-6">
       <div class="max-w-2xl">
         <h2 class="font-serif text-3xl md:text-4xl">Crafted for Visibility & Elegance</h2>
-        <p class="mt-3 text-gray-300">Everything you need for discoverability and conversion—without compromising on style.</p>
+        <p class="mt-3 text-gray-300">Everything you need for discoverability and conversion—without compromising on
+          style.</p>
       </div>
       <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Feature card -->
         <div class="rounded-2xl border border-white/10 p-6">
           <div class="text-champagne">◎</div>
           <h3 class="mt-3 font-medium">Capture</h3>
-          <p class="mt-1 text-gray-400">Pro-grade 360° cameras and on-site direction to showcase your space in its best light.</p>
+          <p class="mt-1 text-gray-400">Pro-grade 360° cameras and on-site direction to showcase your space in its best
+            light.</p>
         </div>
         <div class="rounded-2xl border border-white/10 p-6">
           <div class="text-champagne">◆</div>
           <h3 class="mt-3 font-medium">Retouch</h3>
-          <p class="mt-1 text-gray-400">Meticulous color work, nadir cleanup, and branded UI for a polished experience.</p>
+          <p class="mt-1 text-gray-400">Meticulous color work, nadir cleanup, and branded UI for a polished experience.
+          </p>
         </div>
         <div class="rounded-2xl border border-white/10 p-6">
           <div class="text-champagne">↗</div>
           <h3 class="mt-3 font-medium">Publish</h3>
-          <p class="mt-1 text-gray-400">One‑click publishing to Google Maps plus seamless embeds on your website or CMS.</p>
+          <p class="mt-1 text-gray-400">One‑click publishing to Google Maps plus seamless embeds on your website or CMS.
+          </p>
         </div>
         <div class="rounded-2xl border border-white/10 p-6">
           <div class="text-champagne">☍</div>
@@ -178,7 +222,8 @@
         <div class="rounded-2xl border border-white/10 p-6">
           <div class="text-champagne">☑</div>
           <h3 class="mt-3 font-medium">Hosting & Analytics</h3>
-          <p class="mt-1 text-gray-400">Fast global CDN, privacy controls, and insights on views, clicks, and dwell time.</p>
+          <p class="mt-1 text-gray-400">Fast global CDN, privacy controls, and insights on views, clicks, and dwell
+            time.</p>
         </div>
       </div>
     </div>
@@ -223,7 +268,9 @@
         <h3 class="font-serif text-2xl">Ready to elevate your space?</h3>
         <p class="text-gray-300">We take on a limited number of projects each month.</p>
       </div>
-      <a href="#contact" class="inline-flex items-center rounded-full bg-champagne text-ink px-6 py-3 font-medium shadow-glow">Book a Discovery Call</a>
+      <a href="#contact"
+        class="inline-flex items-center rounded-full bg-champagne text-ink px-6 py-3 font-medium shadow-glow">Book a
+        Discovery Call</a>
     </div>
   </section>
 
@@ -239,4 +286,6 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <label class="block">
             <span class="mb-2 block text-sm text-gray-300">Name</span>
-            <input type="text" name="name" required class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-champagne/60" placeholder="Jane Doe" />
+            <input type="text" name="name" required
+              class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-champagne/60"
+              placeholder="Jane Doe" />
