@@ -1,291 +1,277 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VirtualSpin — 360°</title>
-  <meta name="description" content="360° virtual tours for Google Maps and your website" />
-
-  <!-- Fonts -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VirtualSpin — Premium 360 Virtual Tours & Photos</title>
+  <meta name="description" content="VirtualSpin creates high-quality 360° virtual tours and photos for websites and Google Maps." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Tailwind CSS (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink: '#0b0b0c',
-            stone: '#111113',
-            smoke: '#6b7280',
-            champagne: '#E5C990',
-            mist: '#f7f7f5'
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['Inter', 'system-ui', 'sans-serif']
-          },
-          boxShadow: {
-            glow: '0 0 0 1px rgba(229, 201, 144, 0.35), 0 12px 40px rgba(0,0,0,0.2)'
-          }
-        }
-      }
-    }
-  </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Subtle luxury grain */
-    .grain {
-      position: relative;
+    :root{
+      --bg:#000000;
+      --card:#0b0b0b;
+      --muted:#bdbdbd;
+      --accent1:#ff6b00; /* orange */
+      --accent2:#ff2d2d; /* red */
+      --accent3:#ffd500; /* yellow */
+      --glass: rgba(255,255,255,0.04);
+      --max-width:1200px;
+      --radius:14px;
+      --container-padding:28px;
     }
-
-    .grain:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: url('data:image/svg+xml;utf8,\
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">\
-        <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>\
-        <rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/>\
-      </svg>');
-      mix-blend-mode: multiply;
-      opacity: .25;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:linear-gradient(180deg,#000 0%, #0a0a0a 100%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
     }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}
 
-    html {
-      scroll-behavior: smooth;
+    /* Header */
+    header{padding:26px 0;backdrop-filter: blur(6px);}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0a;font-family:'Space Grotesk', sans-serif;font-size:18px;box-shadow:0 6px 22px rgba(255,107,0,0.12);
     }
+    .brand h1{font-size:18px;margin:0}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{color:var(--muted);font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 16px;border-radius:10px;color:#0b0b0b;font-weight:700}
 
-    .gold-text {
-      background: linear-gradient(90deg, #E5C990, #f7e9c8, #E5C990);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:80px 0}
+    .hero-left h2{font-family:'Space Grotesk',sans-serif;font-size:42px;margin:0 0 18px;letter-spacing:-0.02em}
+    .hero-left p{color:var(--muted);font-size:18px;margin:0 0 24px}
+    .primary-ctas{display:flex;gap:14px}
+    .btn{padding:14px 18px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
+    .btn-solid{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0b0b}
+
+    /* Mock tour card */
+    .tour-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+    .tour-preview{height:280px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#111,#222);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:64px 0}
+    .feature{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .feature h3{margin:0 0 8px}
+    .feature p{color:var(--muted);margin:0}
+
+    /* Examples */
+    .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:64px}
+    .example{height:180px;border-radius:12px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+
+    /* Pricing */
+    .pricing{display:flex;gap:18px;align-items:flex-start;margin-bottom:80px}
+    .price-card{flex:1;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .price-card h4{margin:0 0 8px}
+    .price{font-size:28px;font-weight:800;margin:6px 0}
+    .small{color:var(--muted)}
+
+    /* Contact */
+    footer{padding:36px 0;border-top:1px solid rgba(255,255,255,0.03)}
+    .footer-grid{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .socials{display:flex;gap:12px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(1,1fr)}
+      .examples{grid-template-columns:repeat(2,1fr)}
+      .pricing{flex-direction:column}
+      nav ul{display:none}
+    }
+    @media (max-width:520px){
+      .examples{grid-template-columns:1fr}
+      .logo{width:48px;height:48px}
+      .hero-left h2{font-size:28px}
     }
   </style>
 </head>
-
-<body class="bg-stone text-white antialiased selection:bg-champagne/20">
-  <!-- Nav -->
-  <header class="fixed inset-x-0 top-0 z-50 bg-stone/70 backdrop-blur border-b border-white/10">
-    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-      <a href="#home" class="group inline-flex items-center gap-3" aria-label="virtual">
-
-        <img src='logo.png' alt="Logo" class="w-14 h-14 mr-2" />
-
-        <span class="font-serif text-xl tracking-tight">VirtualSpin</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
-        <a class="hover:text-white" href="#work">Work</a>
-        <a class="hover:text-white" href="#features">Features</a>
-        <a class="hover:text-white" href="#process">Process</a>
-        <a class="hover:text-white" href="#contact">Contact</a>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">VS</div>
+        <div>
+          <h1 style="font-size:14px;margin:0;color:#fff;">VirtualSpin</h1>
+          <div style="color:var(--muted);font-size:12px;margin-top:2px">Premium virtual tours</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#examples">Examples</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
-      <a href="#contact"
-        class="hidden md:inline-flex items-center gap-2 rounded-full border border-champagne/40 px-4 py-2 text-sm hover:bg-champagne hover:text-ink transition-shadow shadow-glow">
-        Get a Quote
-      </a>
+      <div class="primary">
+        <a class="cta" href="#contact">Get a Quote</a>
+      </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="relative overflow-hidden pt-36 md:pt-44 grain">
-    <div class="absolute -top-40 -right-40 h-[42rem] w-[42rem] rounded-full blur-3xl opacity-20"
-      style="background: radial-gradient(closest-side, #E5C990 0%, transparent 60%)"></div>
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="max-w-4xl">
-        <h1 class="font-serif text-6xl md:text-7xl leading-tight">
-          Immaculate <span class="gold-text">360° Virtual Tours</span>
-        </h1>
-        <p class="mt-6 text-xl text-gray-300 max-w-3xl">We craft seamless, luxury-grade tours that elevate your
-          brand—published to Google Maps and embedded beautifully on your website.</p>
-        <div class="mt-10 flex items-center gap-6">
-          <a href="#contact"
-            class="inline-flex items-center justify-center rounded-full bg-champagne text-ink px-8 py-4 font-medium hover:opacity-90 shadow-glow text-lg">Request
-            Proposal</a>
-          <a href="#work"
-            class="inline-flex items-center justify-center rounded-full border border-white/20 px-8 py-4 font-medium text-white/90 hover:text-white hover:border-white/40 text-lg">See
-            Work</a>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Bring spaces to life — <span style="background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">360° virtual tours</span> for websites & Google Maps</h2>
+        <p>Professional 360° captures, immersive tours, and polished photos that embed seamlessly on your site and Google Maps. Increase engagement, bookings, and local visibility.</p>
+        <div class="primary-ctas">
+          <a class="btn btn-solid" href="#contact">Request a Quote</a>
+          <a class="btn btn-outline" href="#examples">View Examples</a>
         </div>
-        <div class="mt-12 flex flex-wrap items-center gap-8 text-base text-gray-400">
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Google Maps
-            compatible</div>
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> Embed
-            anywhere</div>
-          <div class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-champagne"></span> By
-            appointment only</div>
-        </div>
-      </div>
-    </div>
-    <div class="mt-20 md:mt-28 mx-auto max-w-7xl px-6">
-      <div class="aspect-[21/9] w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
-        <img src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d?q=80&w=1920&auto=format&fit=crop"
-          alt="Elegant interior captured in 360° tour" class="h-full w-full object-cover" />
-      </div>
-    </div>
-  </section>
 
-  <!-- Work / Portfolio -->
-  <section id="work" class="py-24 md:py-32 bg-ink">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="flex items-end justify-between gap-6">
-        <div>
-          <h2 class="font-serif text-3xl md:text-4xl">Selected Work</h2>
-          <p class="mt-3 text-gray-400 max-w-xl">From flagship boutiques to landmark residences—our tours bring spaces
-            to life and boost discovery on Google Maps.</p>
+        <div style="margin-top:28px;display:flex;gap:12px;align-items:center">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent3));display:flex;align-items:center;justify-content:center;font-weight:800;color:#0b0b0b;">G</div>
+            <div>
+              <div style="font-weight:700">Google Maps Ready</div>
+              <div style="color:var(--muted);font-size:13px">We upload and optimize your tour for Maps & Street View</div>
+            </div>
+          </div>
         </div>
-        <a href="#contact"
-          class="hidden md:inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-sm hover:border-white/40">Start
-          Your Project</a>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop"
-            alt="Luxury hotel lobby"
-            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-            <div class="font-medium">Grand Mercier Hotel</div>
-            <div class="text-sm text-gray-300">Lobby & amenities — Published to Google Maps</div>
-          </figcaption>
-        </figure>
-        <!-- Card 2 -->
-        <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1505692794403-34d4982ebda1?q=80&w=1600&auto=format&fit=crop"
-            alt="Flagship boutique"
-            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-            <div class="font-medium">Atelier Roma</div>
-            <div class="text-sm text-gray-300">Flagship boutique — Website embed & Maps</div>
-          </figcaption>
-        </figure>
-        <!-- Card 3 -->
-        <figure class="group relative overflow-hidden rounded-2xl border border-white/10">
-          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
-            alt="Modern residence"
-            class="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <figcaption class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-            <div class="font-medium">Villa Horizonte</div>
-            <div class="text-sm text-gray-300">Private residence — Secure client portal</div>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+      <aside class="tour-card">
+        <div class="tour-preview" aria-hidden>
+          Interactive Tour Preview
+        </div>
+        <div class="meta">
+          <div>
+            <div style="font-weight:700">Modern Boutique — Vienna</div>
+            <div style="color:var(--muted);font-size:13px">12 high-res 360° panoramas • 3D navigation</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:800;color:var(--accent1)">€249</div>
+            <div style="font-size:12px;color:var(--muted)">starting price</div>
+          </div>
+        </div>
+      </aside>
+    </section>
 
-  <!-- Features -->
-  <section id="features" class="py-24 md:py-28 bg-stone">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="max-w-2xl">
-        <h2 class="font-serif text-3xl md:text-4xl">Crafted for Visibility & Elegance</h2>
-        <p class="mt-3 text-gray-300">Everything you need for discoverability and conversion—without compromising on
-          style.</p>
-      </div>
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Feature card -->
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">◎</div>
-          <h3 class="mt-3 font-medium">Capture</h3>
-          <p class="mt-1 text-gray-400">Pro-grade 360° cameras and on-site direction to showcase your space in its best
-            light.</p>
+    <section id="features">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Why choose VirtualSpin</h3>
+      <div class="features">
+        <div class="feature">
+          <h3>High-Fidelity 360° Photos</h3>
+          <p>Captured with professional 360 cameras, optimized and color-corrected for crisp web viewing.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">◆</div>
-          <h3 class="mt-3 font-medium">Retouch</h3>
-          <p class="mt-1 text-gray-400">Meticulous color work, nadir cleanup, and branded UI for a polished experience.
-          </p>
+        <div class="feature">
+          <h3>Google Maps Integration</h3>
+          <p>We publish directly to Google Maps and Street View so customers find you faster.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">↗</div>
-          <h3 class="mt-3 font-medium">Publish</h3>
-          <p class="mt-1 text-gray-400">One‑click publishing to Google Maps plus seamless embeds on your website or CMS.
-          </p>
-        </div>
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">☍</div>
-          <h3 class="mt-3 font-medium">Integrate</h3>
-          <p class="mt-1 text-gray-400">Works with WordPress, Webflow, Shopify, Squarespace, and custom sites.</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">★</div>
-          <h3 class="mt-3 font-medium">Boost Discovery</h3>
-          <p class="mt-1 text-gray-400">Enhanced listings on Google improve engagement and time on profile.</p>
-        </div>
-        <div class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne">☑</div>
-          <h3 class="mt-3 font-medium">Hosting & Analytics</h3>
-          <p class="mt-1 text-gray-400">Fast global CDN, privacy controls, and insights on views, clicks, and dwell
-            time.</p>
+        <div class="feature">
+          <h3>Website Embeds & SEO</h3>
+          <p>Responsive embeds, fast-loading tiles, and schema-ready markup to help search engines pick up your listing.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Process -->
-  <section id="process" class="py-24 md:py-28 bg-ink">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="max-w-2xl">
-        <h2 class="font-serif text-3xl md:text-4xl">A Discreet, White‑Glove Process</h2>
-        <p class="mt-3 text-gray-400">We coordinate around your schedule and guests, minimizing disruption.</p>
+    <section id="examples">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Selected examples</h3>
+      <div class="examples">
+        <div class="example">Hotel Lobby — Interactive Tour</div>
+        <div class="example">Restaurant Interior — 360 Walkthrough</div>
+        <div class="example">Luxury Apartment — High-res Photos</div>
       </div>
-      <ol class="mt-10 grid grid-cols-1 md:grid-cols-4 gap-6 counter-reset">
-        <li class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne text-sm">01</div>
-          <h3 class="mt-2 font-medium">Consult</h3>
-          <p class="mt-1 text-gray-400">Walkthrough, shot‑list, and logistics. NDA on request.</p>
-        </li>
-        <li class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne text-sm">02</div>
-          <h3 class="mt-2 font-medium">Capture</h3>
-          <p class="mt-1 text-gray-400">On‑site scan with pro 360° gear and lighting.</p>
-        </li>
-        <li class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne text-sm">03</div>
-          <h3 class="mt-2 font-medium">Craft</h3>
-          <p class="mt-1 text-gray-400">Editing, retouching, hotspots, floor plans, and branding.</p>
-        </li>
-        <li class="rounded-2xl border border-white/10 p-6">
-          <div class="text-champagne text-sm">04</div>
-          <h3 class="mt-2 font-medium">Publish</h3>
-          <p class="mt-1 text-gray-400">Push to Google Maps + embed code delivered.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA Ribbon -->
-  <section class="relative overflow-hidden bg-gradient-to-r from-ink via-stone to-ink py-16">
-    <div class="mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+    <section id="pricing">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Pricing</h3>
+      <div class="pricing">
+        <div class="price-card">
+          <h4>Starter</h4>
+          <div class="price">€249</div>
+          <div class="small">Up to 10 panoramas · Google Maps upload · Web embed</div>
+          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
+            <li>Color correction & retouching</li>
+            <li>Basic hotspot navigation</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Order Starter</a></div>
+        </div>
+        <div class="price-card">
+          <h4>Business</h4>
+          <div class="price">€499</div>
+          <div class="small">Up to 25 panoramas · Priority publish · Custom branding</div>
+          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
+            <li>Advanced hotspots & info cards</li>
+            <li>Tour analytics</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Order Business</a></div>
+        </div>
+        <div class="price-card">
+          <h4>Enterprise</h4>
+          <div class="price">Custom</div>
+          <div class="small">Large properties · Multi-location · API integration</div>
+          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
+            <li>On-site photography team</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Contact Sales</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Contact & Booking</h3>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+        <div style="background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+          <p style="color:var(--muted)">Tell us about your project — location, size, and preferred date. We'll reply with availability and a detailed quote.</p>
+          <form style="display:grid;gap:10px;margin-top:12px">
+            <input placeholder="Name" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
+            <input placeholder="Email" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
+            <input placeholder="Phone (optional)" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
+            <textarea placeholder="Project details" rows="4" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff"></textarea>
+            <div style="display:flex;gap:10px">
+              <button class="btn btn-solid" type="button">Send Request</button>
+              <button class="btn btn-outline" type="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+
+        <div style="padding:18px;border-radius:12px;background:linear-gradient(90deg,rgba(255,107,0,0.08),rgba(255,45,45,0.06));border:1px solid rgba(255,255,255,0.03)">
+          <h4 style="margin:0 0 6px">Quick info</h4>
+          <div style="color:var(--muted);font-size:14px">Email: hello@virtualspin.example</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:8px">Phone: +43 123 456 789</div>
+          <div style="margin-top:12px;color:var(--muted);font-size:13px">We travel across Austria — remote shoots priced on request.</div>
+          <div style="margin-top:12px"><a class="btn btn-outline" href="#pricing">See Pricing</a></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
       <div>
-        <h3 class="font-serif text-2xl">Ready to elevate your space?</h3>
-        <p class="text-gray-300">We take on a limited number of projects each month.</p>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo" style="width:46px;height:46px;border-radius:10px">VS</div>
+          <div>
+            <div style="font-weight:700">VirtualSpin</div>
+            <div style="color:var(--muted);font-size:13px">360 tours • Google Maps • Web embeds</div>
+          </div>
+        </div>
       </div>
-      <a href="#contact"
-        class="inline-flex items-center rounded-full bg-champagne text-ink px-6 py-3 font-medium shadow-glow">Book a
-        Discovery Call</a>
+      <div style="text-align:right">
+        <div style="color:var(--muted)">© <span id="year"></span> VirtualSpin — All rights reserved</div>
+      </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- Contact -->
-  <section id="contact" class="py-24 md:py-32 bg-stone">
-    <div class="mx-auto max-w-4xl px-6">
-      <div class="text-center">
-        <h2 class="font-serif text-3xl md:text-4xl">Speak with a Producer</h2>
-        <p class="mt-3 text-gray-300">Tell us about your property or venue and where you want the tour published.</p>
-      </div>
-
-      <form class="mt-10 grid grid-cols-1 gap-5">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <label class="block">
-            <span class="mb-2 block text-sm text-gray-300">Name</span>
-            <input type="text" name="name" required
-              class="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-champagne/60"
-              placeholder=" yourname" />
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
