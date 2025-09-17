@@ -10,7 +10,7 @@
       margin: 0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background-color: #000;
-      color: #fff;
+      color: (to right, #ff0000, #ff9900, #ffcc00);
     }
 
     header {
@@ -18,7 +18,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background-color: #000;
+      background-color: (to right, #ff0000, #ff9900, #ffcc00);
     }
 
     header h1 {
@@ -31,7 +31,7 @@
     }
 
     nav a {
-      color: #fff;
+      color: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
       margin-left: 20px;
       text-decoration: none;
       font-weight: 500;
@@ -196,21 +196,7 @@
 </head>
 
 <body>
-  <header
-    style="position: sticky; top: 0; z-index: 1000; background-color: #000; display: flex; align-items: center; padding: 10px 40px;">
-    <img src="logo.png" alt="VirtualSpin Logo" style="height: 40px; margin-right: 15px;">
-    <h1 style="margin: 0;">VirtualSpin</h1>
-    <nav style="margin-left: auto;">
-      <a href="#packages">Packages</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Premium 360° Virtual Tours</h2>
-    <p>Bring your business to life with immersive virtual tours and high-quality 360° photography. Perfect for Google
-      Maps, websites, and social media.</p>
-  </section>
 
   <section id="packages" class="section">
 
@@ -261,6 +247,17 @@
         <button type="submit">Send Message</button>
       </form>
     </div>
+    
+     <header
+    style="position: sticky; top: 0; z-index: 1000; background-color: #000; display: flex; align-items: center; padding: 10px 40px;">
+    <img src="logo.png" alt="VirtualSpin Logo" style="height: 40px; margin-right: 15px;">
+    <h1 style="margin: 0;">VirtualSpin</h1>
+    <nav style="margin-left: auto;">
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
 
     <footer>
       &copy; 2025 VirtualSpin. All rights reserved
