@@ -1,277 +1,226 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VirtualSpin — Premium 360 Virtual Tours & Photos</title>
-  <meta name="description" content="VirtualSpin creates high-quality 360° virtual tours and photos for websites and Google Maps." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualSpin - Premium 360° Virtual Tours</title>
   <style>
-    :root{
-      --bg:#000000;
-      --card:#0b0b0b;
-      --muted:#bdbdbd;
-      --accent1:#ff6b00; /* orange */
-      --accent2:#ff2d2d; /* red */
-      --accent3:#ffd500; /* yellow */
-      --glass: rgba(255,255,255,0.04);
-      --max-width:1200px;
-      --radius:14px;
-      --container-padding:28px;
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background:linear-gradient(180deg,#000 0%, #0a0a0a 100%);
-      color:#fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #000;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max-width);margin:0 auto;padding:0 var(--container-padding)}
-
-    /* Header */
-    header{padding:26px 0;backdrop-filter: blur(6px);}
-    .nav{display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{
-      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0a;font-family:'Space Grotesk', sans-serif;font-size:18px;box-shadow:0 6px 22px rgba(255,107,0,0.12);
+    header h1 {
+      font-size: 24px;
+      background: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+      font-family: 'Helvetica Neue', sans-serif;
     }
-    .brand h1{font-size:18px;margin:0}
-    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;align-items:center}
-    nav a{color:var(--muted);font-weight:600}
-    .cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px 16px;border-radius:10px;color:#0b0b0b;font-weight:700}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center;padding:80px 0}
-    .hero-left h2{font-family:'Space Grotesk',sans-serif;font-size:42px;margin:0 0 18px;letter-spacing:-0.02em}
-    .hero-left p{color:var(--muted);font-size:18px;margin:0 0 24px}
-    .primary-ctas{display:flex;gap:14px}
-    .btn{padding:14px 18px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
-    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
-    .btn-solid{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0b0b0b}
-
-    /* Mock tour card */
-    .tour-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
-    .tour-preview{height:280px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#111,#222);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-    .meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-
-    /* Features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:64px 0}
-    .feature{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .feature h3{margin:0 0 8px}
-    .feature p{color:var(--muted);margin:0}
-
-    /* Examples */
-    .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:64px}
-    .example{height:180px;border-radius:12px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
-
-    /* Pricing */
-    .pricing{display:flex;gap:18px;align-items:flex-start;margin-bottom:80px}
-    .price-card{flex:1;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
-    .price-card h4{margin:0 0 8px}
-    .price{font-size:28px;font-weight:800;margin:6px 0}
-    .small{color:var(--muted)}
-
-    /* Contact */
-    footer{padding:36px 0;border-top:1px solid rgba(255,255,255,0.03)}
-    .footer-grid{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
-    .socials{display:flex;gap:12px}
-
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .features{grid-template-columns:repeat(1,1fr)}
-      .examples{grid-template-columns:repeat(2,1fr)}
-      .pricing{flex-direction:column}
-      nav ul{display:none}
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
     }
-    @media (max-width:520px){
-      .examples{grid-template-columns:1fr}
-      .logo{width:48px;height:48px}
-      .hero-left h2{font-size:28px}
+    nav a:hover {
+      color: #ffcc00;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero h2 {
+      font-size: 64px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 20px;
+      color: #ccc;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .bubble {
+      background-color: #111;
+      border-radius: 30px;
+      padding: 40px;
+      margin: 20px;
+      box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
+      display: inline-block;
+      vertical-align: top;
+      width: 45%;
+      text-align: center;
+    }
+    .bubble.starter {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .bubble h4 {
+      font-size: 36px;
+      background: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 20px;
+    }
+    .bubble p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ddd;
+      text-align: left;
+    }
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color:#777;
+    }
+    .highlight-price {
+      background: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .check {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    .cross {
+      text-decoration: line-through;
+      color: #777;
+      font-weight: bold;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 60px auto;
+      background-color: #111;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 165, 0, 0.3);
+      text-align: left;
+    }
+    .contact-form h4 {
+      background: linear-gradient(to right, #ff0000, #ff9900, #ffcc00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    .contact-form label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #ddd;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #222;
+      color: #fff;
+      font-size: 16px;
+    }
+    .contact-form button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: orange;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .contact-form button:hover {
+      background-color: #ffcc00;
+    }
+    footer {
+      background-color: #000;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+    .packages-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo">VS</div>
-        <div>
-          <h1 style="font-size:14px;margin:0;color:#fff;">VirtualSpin</h1>
-          <div style="color:var(--muted);font-size:12px;margin-top:2px">Premium virtual tours</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#examples">Examples</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="primary">
-        <a class="cta" href="#contact">Get a Quote</a>
-      </div>
-    </div>
+    <h1>VirtualSpin</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-left">
-        <h2>Bring spaces to life — <span style="background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;">360° virtual tours</span> for websites & Google Maps</h2>
-        <p>Professional 360° captures, immersive tours, and polished photos that embed seamlessly on your site and Google Maps. Increase engagement, bookings, and local visibility.</p>
-        <div class="primary-ctas">
-          <a class="btn btn-solid" href="#contact">Request a Quote</a>
-          <a class="btn btn-outline" href="#examples">View Examples</a>
-        </div>
+  <section class="hero">
+    <h2>Premium 360° Virtual Tours</h2>
+    <p>Bring your business to life with immersive virtual tours and high-quality 360° photography. Perfect for Google Maps, websites, and social media.</p>
+  </section>
 
-        <div style="margin-top:28px;display:flex;gap:12px;align-items:center">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent3));display:flex;align-items:center;justify-content:center;font-weight:800;color:#0b0b0b;">G</div>
-            <div>
-              <div style="font-weight:700">Google Maps Ready</div>
-              <div style="color:var(--muted);font-size:13px">We upload and optimize your tour for Maps & Street View</div>
-            </div>
-          </div>
-        </div>
+  <section id="packages" class="section">
+
+    <!-- Starter Package Bubble -->
+    <div class="bubble starter" style="width: 60%; margin-bottom: 40px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+      <h4>Starter Package</h4>
+      <div class="price"><span class="old-price">300 €</span> <span class="highlight-price">249 €</span></div>
+      <p>✔ Includes 4 Professional 360° panorama recordings<br>✔ +1 Picture: <strong>Free</strong><br>✔ Upload to Google Maps: <strong>Free</strong><br>✔ Updating of location if needed: <strong>Free</strong><br>✔ Updating of contact details on Google: <strong>Free</strong><br>✔ Updating of opening hours: <strong>Free</strong></p>
+    </div>
+
+    <!-- Two Column Packages Side by Side -->
+    <div class="packages-container">
+      <div class="bubble">
+        <h4>Virtual Tour Package</h4>
+        <div class="price"><span class="old-price">750 €</span> <span class="highlight-price">499 €</span></div>
+        <p>✔ Up to 10 pictures<br>✔ Interactive Tour with Hotspots<br>✔ Upload to Google Maps<br>✔ Pictures for all social platforms<br>✔ Video for YouTube<br>✔ HTML Link for Website<br>✔ Updating of Location if Needed<br>✔ Updating of Contact Details on Google<br>✔ Updating of Opening Hours<br><span class="cross">Multi Location</span><br><span class="cross">SEO Premium</span><br><span class="cross">Pro Webdesign Service</span></p>
       </div>
 
-      <aside class="tour-card">
-        <div class="tour-preview" aria-hidden>
-          Interactive Tour Preview
-        </div>
-        <div class="meta">
-          <div>
-            <div style="font-weight:700">Modern Boutique — Vienna</div>
-            <div style="color:var(--muted);font-size:13px">12 high-res 360° panoramas • 3D navigation</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-weight:800;color:var(--accent1)">€249</div>
-            <div style="font-size:12px;color:var(--muted)">starting price</div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="features">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Why choose VirtualSpin</h3>
-      <div class="features">
-        <div class="feature">
-          <h3>High-Fidelity 360° Photos</h3>
-          <p>Captured with professional 360 cameras, optimized and color-corrected for crisp web viewing.</p>
-        </div>
-        <div class="feature">
-          <h3>Google Maps Integration</h3>
-          <p>We publish directly to Google Maps and Street View so customers find you faster.</p>
-        </div>
-        <div class="feature">
-          <h3>Website Embeds & SEO</h3>
-          <p>Responsive embeds, fast-loading tiles, and schema-ready markup to help search engines pick up your listing.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="examples">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Selected examples</h3>
-      <div class="examples">
-        <div class="example">Hotel Lobby — Interactive Tour</div>
-        <div class="example">Restaurant Interior — 360 Walkthrough</div>
-        <div class="example">Luxury Apartment — High-res Photos</div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Pricing</h3>
-      <div class="pricing">
-        <div class="price-card">
-          <h4>Starter</h4>
-          <div class="price">€249</div>
-          <div class="small">Up to 10 panoramas · Google Maps upload · Web embed</div>
-          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
-            <li>Color correction & retouching</li>
-            <li>Basic hotspot navigation</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Order Starter</a></div>
-        </div>
-        <div class="price-card">
-          <h4>Business</h4>
-          <div class="price">€499</div>
-          <div class="small">Up to 25 panoramas · Priority publish · Custom branding</div>
-          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
-            <li>Advanced hotspots & info cards</li>
-            <li>Tour analytics</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Order Business</a></div>
-        </div>
-        <div class="price-card">
-          <h4>Enterprise</h4>
-          <div class="price">Custom</div>
-          <div class="small">Large properties · Multi-location · API integration</div>
-          <ul style="margin-top:12px;color:var(--muted);padding-left:18px">
-            <li>On-site photography team</li>
-            <li>Dedicated account manager</li>
-          </ul>
-          <div style="margin-top:14px"><a class="btn btn-solid" href="#contact">Contact Sales</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:20px;margin:0 0 18px">Contact & Booking</h3>
-      <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
-        <div style="background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
-          <p style="color:var(--muted)">Tell us about your project — location, size, and preferred date. We'll reply with availability and a detailed quote.</p>
-          <form style="display:grid;gap:10px;margin-top:12px">
-            <input placeholder="Name" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
-            <input placeholder="Email" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
-            <input placeholder="Phone (optional)" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff" />
-            <textarea placeholder="Project details" rows="4" style="padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:#fff"></textarea>
-            <div style="display:flex;gap:10px">
-              <button class="btn btn-solid" type="button">Send Request</button>
-              <button class="btn btn-outline" type="reset">Reset</button>
-            </div>
-          </form>
-        </div>
-
-        <div style="padding:18px;border-radius:12px;background:linear-gradient(90deg,rgba(255,107,0,0.08),rgba(255,45,45,0.06));border:1px solid rgba(255,255,255,0.03)">
-          <h4 style="margin:0 0 6px">Quick info</h4>
-          <div style="color:var(--muted);font-size:14px">Email: hello@virtualspin.example</div>
-          <div style="color:var(--muted);font-size:14px;margin-top:8px">Phone: +43 123 456 789</div>
-          <div style="margin-top:12px;color:var(--muted);font-size:13px">We travel across Austria — remote shoots priced on request.</div>
-          <div style="margin-top:12px"><a class="btn btn-outline" href="#pricing">See Pricing</a></div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="wrap footer-grid">
-      <div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="logo" style="width:46px;height:46px;border-radius:10px">VS</div>
-          <div>
-            <div style="font-weight:700">VirtualSpin</div>
-            <div style="color:var(--muted);font-size:13px">360 tours • Google Maps • Web embeds</div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div style="color:var(--muted)">© <span id="year"></span> VirtualSpin — All rights reserved</div>
+      <div class="bubble">
+        <h4>Premium Package</h4>
+        <div class="price"><span class="old-price">1300 €</span> <span class="highlight-price">899 €</span></div>
+        <p>✔ Up to 50 pictures<br>✔ Interactive Tour with Hotspots<br>✔ Upload to Google Maps<br>✔ Pictures for all social platforms<br>✔ Video for YouTube<br>✔ HTML Link for Website<br>✔ Updating of Location if Needed<br>✔ Updating of Contact Details on Google<br>✔ Updating of Opening Hours<br>✔ Multi Location<br>✔ SEO Premium<br>✔ Pro Webdesign Service</p>
       </div>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+    <div class="contact-form" id="contact">
+      <h4>Contact Us</h4>
+      <form action="mailto:info@virtualspin.co" method="post" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  <footer>
+    &copy; 2025 VirtualSpin. All rights reserved
